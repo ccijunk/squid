@@ -1,0 +1,34 @@
+CONTRIBUTORS
+  s_4697c3409733e7::t_8f55e1bfb11c30 77
+src/HttpHeader.cc
+  s_4697c3409733e7::t_7d27a85eec92f5 263-267
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "20e1b93a766449ccbf5d4db530e2ea52f3a77384",
+  "prompts": {},
+  "sessions": {
+    "s_4697c3409733e7": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a8edb7c402536a81294af77",
+        "model": "DeepSeek-V4-Flash-Official"
+      },
+      "human_author": "chenqi49 <479148871@qq.com>",
+      "custom_attributes": {
+        "tool_id": "icube:applyChatSnapshotPatch",
+        "runtime_client": "trae-tob-git-ai",
+        "tool_use_id": "6a8edd64402536a81294afb2",
+        "session_id": "6a8edb7c402536a81294af77",
+        "tool_type": "builtin",
+        "external_session_id": "6a8edb7c402536a81294af77",
+        "dedupe_key": "6a8edb7c402536a81294af77:6a8edd64402536a81294afb2:afterEdit:9fc4257e",
+        "client_type": "ide",
+        "operation_id": "6a8edd64402536a81294afb2",
+        "source_scene": "agent",
+        "edit_kind": "file_edit"
+      }
+    }
+  }
+}
