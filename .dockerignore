@@ -1,0 +1,7 @@
+.git
+.cache
+Makefile.in
+configure
+*.o
+*.lo
+*.la
