@@ -1,0 +1,55 @@
+guide-build-rootless-image.md
+  s_4697c3409733e7::t_ace5e0bede7dff 1-270
+Dockerfile
+  s_4697c3409733e7::t_a68f8aade036a9 78
+  s_4697c3409733e7::t_152a6b1a017147 102-107
+  s_4697c3409733e7::t_e02ed3a1991fcf 88
+  s_4697c3409733e7::t_633391506e95a9 81
+  s_4697c3409733e7::t_c98b619d1580c7 122-125
+  s_4697c3409733e7::t_112310428cd37f 86,96
+  s_4697c3409733e7::t_96f04e246f5986 52
+  s_4697c3409733e7::t_b62e1a32621fa5 1-34,36-38,40-51,53-77,79-80,82-85,87,89-90,92-95,97-101,108,111-121,126
+  s_4697c3409733e7::t_29082a49c46a7b 91
+  s_4697c3409733e7::t_edabaf18c72ec6 39
+  s_4697c3409733e7::t_5b7b77d99d2093 35
+  s_4697c3409733e7::t_acbd4f935f4c54 109-110
+entrypoint.sh
+  s_4697c3409733e7::t_28b50180cef091 5,9-12
+  s_4697c3409733e7::t_76e194df90da8f 1-4,6-7,13-14
+  s_4697c3409733e7::t_4334c175f03ae4 8,15
+.dockerignore
+  s_4697c3409733e7::t_dcb69a84e3b7b3 1-7
+squid.conf
+  s_4697c3409733e7::t_432ef75af86bf6 1-2,6-9,13-31
+  s_4697c3409733e7::t_fca97f2b60b71f 3-5
+  s_4697c3409733e7::t_21731ddda0b3ce 10-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.2",
+  "base_commit_sha": "7a595eea98e99aad0a841f6a30d2406733c5e531",
+  "prompts": {},
+  "sessions": {
+    "s_4697c3409733e7": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6a8edb7c402536a81294af77",
+        "model": "DeepSeek-V4-Flash-Official"
+      },
+      "human_author": "chenqi49 <479148871@qq.com>",
+      "custom_attributes": {
+        "tool_id": "icube:applyChatSnapshotPatch",
+        "operation_id": "6a8fa315402536a81294b431",
+        "source_scene": "agent",
+        "tool_type": "builtin",
+        "edit_kind": "file_edit",
+        "session_id": "6a8edb7c402536a81294af77",
+        "dedupe_key": "6a8edb7c402536a81294af77:6a8fa315402536a81294b431:afterEdit:43b28512",
+        "client_type": "ide",
+        "external_session_id": "6a8edb7c402536a81294af77",
+        "tool_use_id": "6a8fa315402536a81294b431",
+        "runtime_client": "trae-tob-git-ai"
+      }
+    }
+  }
+}
