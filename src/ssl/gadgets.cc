@@ -358,19 +358,27 @@ Ssl::OnDiskCertificateDbKey(const Ssl::CertificateProperties &properties)
 static bool
 mimicAuthorityKeyId(Security::CertPointer &cert, Security::CertPointer const &mimicCert, Security::CertPointer const &issuerCert)
 {
-    if (!mimicCert.get() || !issuerCert.get())
+    if (!issuerCert.get())
         return false;
 
-    Ssl::AUTHORITY_KEYID_Pointer akid((AUTHORITY_KEYID *)X509_get_ext_d2i(mimicCert.get(), NID_authority_key_identifier, nullptr, nullptr));
-
     bool addKeyId = false, addIssuer = false;
-    if (akid.get()) {
-        addKeyId = (akid.get()->keyid != nullptr);
-        addIssuer = (akid.get()->issuer && akid.get()->serial);
-    }
+    if (mimicCert.get()) {
+        // Mimic the AuthorityKeyIdentifier fields of the origin certificate.
+        Ssl::AUTHORITY_KEYID_Pointer akid((AUTHORITY_KEYID *)X509_get_ext_d2i(mimicCert.get(), NID_authority_key_identifier, nullptr, nullptr));
+        if (akid.get()) {
+            addKeyId = (akid.get()->keyid != nullptr);
+            addIssuer = (akid.get()->issuer && akid.get()->serial);
+        }
 
-    if (!addKeyId && !addIssuer)
-        return false; // No need to add AuthorityKeyIdentifier
+        if (!addKeyId && !addIssuer)
+            return false; // No need to add AuthorityKeyIdentifier
+    } else {
+        // Client-first bump: no origin certificate to mimic, but strict
+        // validators (e.g. Python 3.13+ VERIFY_X509_STRICT, openssl
+        // -x509_strict) reject forged leaves without an AKI. Build one from
+        // the signing CA's Subject Key Identifier.
+        addKeyId = true;
+    }
 
     Ssl::ASN1_OCTET_STRING_Pointer issuerKeyId;
     if (addKeyId) {
@@ -677,6 +685,10 @@ static bool buildCertificate(Security::CertPointer & cert, Ssl::CertificatePrope
         }
 
         addedExtensions += mimicExtensions(cert, properties.mimicCert, properties.signWithX509);
+    } else if (mimicAuthorityKeyId(cert, properties.mimicCert, properties.signWithX509)) {
+        // Client-first bump: no origin certificate to mimic; still add an
+        // AuthorityKeyIdentifier built from the signing CA (see above).
+        ++addedExtensions;
     }
 
     if (useCommonNameAsAltName && addAltNameWithSubjectCn(cert))

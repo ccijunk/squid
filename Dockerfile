@@ -1,6 +1,7 @@
 # syntax=docker/dockerfile:1
 #
-# Squid v7.7.1 source-built image (v7 branch + PR 2401 "Bug 5538").
+# Squid v7.7.2 source-built image (v7.7.2 branch = v7 + PR 2401 "Bug 5538"
+# + client-first bump AKI patch in src/ssl/gadgets.cc).
 #
 # Stage dependency chain:
 #
@@ -44,7 +45,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Version stamping: bake the exact release number into configure.ac so that
 # `squid -v` reports the tag version instead of "7.7-VCS".
-ARG SQUID_VERSION=7.7.1
+ARG SQUID_VERSION=7.7.2
 
 WORKDIR /src
 COPY . .
